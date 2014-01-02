@@ -124,6 +124,12 @@ function draw()
   }
 
   $('.sheetroll').html( rows.join("\n") );
+
+  var percent_size = Math.floor( 100.0 / (bars*divisions+1) );
+  var pixel_size = $('.sheetroll').width() * percent_size / 100;
+
+  $('.sheetroll .note').add('.sheetroll .shortcode')
+    .css( { width : percent_size + '%', height : pixel_size + 'px' } );
 }
 
 
