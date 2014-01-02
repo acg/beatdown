@@ -2,39 +2,79 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" lang="en" xml:lang="en"> 
 <head>
 
-<title></title>
+<title>Beatdown :: Random Beat Generator</title>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <meta name="og:url" content="" />
   <meta name="description" content="" />
   <meta name="keywords" content="" />
+
   <link rel="stylesheet" href="css/reset.css" type="text/css" />
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="css/main.css" type="text/css" />
+
   <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/beatdown.js"></script>
 
 </head>
 <body class="beatdown">
 
-<form>
+<div class="container">
+  <div id="main">
 
-  <label for="bpm">bpm</label>
-  <input type="text" name="bpm" value="" />
+    <div class="panel panel-default">
 
-  <label for="bars">bars</label>
-  <input type="text" name="bars" value="" />
+      <div class="panel-heading">
+        <h1>Beatdown :: a random beat track generator</h1>
+      </div>
 
-  <label for="divisions">divisions</label>
-  <input type="text" name="divisions" value="" />
+      <form class="form-horizontal panel-body" role="form">
 
-  <input type="button" name="play" value="play" />
-  <input type="button" name="generate" value="generate" />
+        <div class="col-lg-2">
 
-</form>
+          <fieldset class="form-group">
+            <label for="bpm" class="control-label col-lg-6">bpm</label>
+            <div class="col-lg-6">
+              <input type="text" name="bpm" value="" class="form-control" />
+            </div>
+          </fieldset>
 
-<ul class="sheetroll">
-</ul>
+          <fieldset class="form-group">
+            <label for="bars" class="control-label col-lg-6">bars</label>
+            <div class="col-lg-6">
+              <input type="text" name="bars" value="" class="form-control" />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="divisions" class="control-label col-lg-6">divisions</label>
+            <div class="col-lg-6">
+              <input type="text" name="divisions" value="" class="form-control" />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <input type="button" name="play" value="play" class="btn btn-primary col-lg-11" />
+          </fieldset>
+
+          <fieldset class="form-group">
+            <input type="button" name="generate" value="generate" class="btn btn-primary col-lg-11" />
+          </fieldset>
+
+        </div>
+
+        <ul class="sheetroll col-lg-10 well">
+          <!-- filled in by javascript -->
+        </ul>
+
+      </form>
+
+    </div> <!-- /.panel -->
+
+  </div> <!-- /#main -->
+</div> <!-- /.container -->
 
 </body>
 </html>
