@@ -52,11 +52,12 @@ $(document).ready(function() {
     return false;
   } );
 
+  for (i=0; i<tracks.length; i++)
+    sounds[i] = new Audio(sounds[i]);
+
   generate();
   start_timer();
 
-  for (i=0; i<tracks.length; i++)
-    new Audio(sounds[i]);
 });
 
 
@@ -90,7 +91,7 @@ function play()
 
   for (i=0; i<tracks.length; i++)
     if (tracks[i] & (1 << playhead))
-      new Audio(sounds[i]).play();
+      sounds[i].play();
 
   playhead += 1;
   playhead %= bars * divisions;
