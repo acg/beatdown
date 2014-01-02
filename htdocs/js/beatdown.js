@@ -16,6 +16,8 @@ $(document).ready(function() {
   var $play = $(':input[name="play"]');
   var $generate = $(':input[name="generate"]');
   var $bpm = $(':input[name="bpm"]');
+  var $bars = $(':input[name="bars"]');
+  var $divisions = $(':input[name="divisions"]');
 
   $play.click( function() {
     playing = !playing;
@@ -33,6 +35,20 @@ $(document).ready(function() {
   $bpm.change( function() {
     bpm = parseInt( $bpm.val() );
     start_timer();
+    return false;
+  } );
+
+  $bars.val(bars);
+  $bars.change( function() {
+    bars = parseInt( $bars.val() );
+    generate();
+    return false;
+  } );
+
+  $divisions.val(divisions);
+  $divisions.change( function() {
+    divisions = parseInt( $divisions.val() );
+    generate();
     return false;
   } );
 
@@ -54,6 +70,8 @@ function start_timer()
 
 function generate()
 {
+  stop();
+
   for (i=0; i<tracks.length; i++)
     tracks[i] = Math.round( Math.random() * (1 << (bars * divisions)) );
 
@@ -77,6 +95,15 @@ function play()
 }
 
 
+function stop()
+{
+  var $play = $(':input[name="play"]');
+  if (playing) $play.click();
+  playhead = 0;
+  highlight();
+}
+
+
 function draw()
 {
   var rows = [];
@@ -89,8 +116,9 @@ function draw()
       var note_filled = tracks[i] & (1 << t);
       row.push( '<li class="note ' + (note_filled ? 'on' : 'off') + '"></li>' );
     }
+    var shortcode = '<li class="shortcode"><em>' + tracks[i] + '</em></li>';
     var clear = '<li class="clear"></li>';
-    rows.push( '<li> <ul class="track">' + row.join("\n") + '</ul> </li>' + clear );
+    rows.push( '<li> <ul class="track">' + row.join("\n") + '</ul> </li>' + shortcode + clear );
   }
 
   $('.sheetroll').html( rows.join("\n") );

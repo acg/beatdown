@@ -6,15 +6,21 @@
   clear: both;
 }
 
-.beatdown .sheetroll .note {
+.beatdown .sheetroll .note,
+.beatdown .sheetroll .shortcode {
+  position: relative;
   box-sizing: border-box;
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
+}
+
+.beatdown .sheetroll .note {
   border: 1px dotted #fff;
 }
 
 .beatdown .sheetroll .note.active {
-  border: 1px solid blue;
+  border-left: 2px solid blue;
+  border-right: 2px solid blue;
 }
 
 .beatdown .sheetroll .note.on {
@@ -23,5 +29,11 @@
 
 .beatdown .sheetroll .note.off {
   background-color: #ddd;
+}
+
+.beatdown .sheetroll .shortcode {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
