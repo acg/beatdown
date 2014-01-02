@@ -55,6 +55,8 @@ $(document).ready(function() {
   generate();
   start_timer();
 
+  for (i=0; i<tracks.length; i++)
+    new Audio(sounds[i]);
 });
 
 
