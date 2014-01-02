@@ -56,6 +56,8 @@ function generate()
 {
   for (i=0; i<tracks.length; i++)
     tracks[i] = Math.round( Math.random() * (1 << (bars * divisions)) );
+
+  draw();
 }
 
 
@@ -64,6 +66,8 @@ function play()
   if (!playing)
     return;
 
+  highlight();
+
   for (i=0; i<tracks.length; i++)
     if (tracks[i] & (1 << playhead))
       new Audio(sounds[i]).play();
@@ -71,6 +75,34 @@ function play()
   playhead += 1;
   playhead %= bars * divisions;
 }
+
+
+function draw()
+{
+  var rows = [];
+
+  for (i=0; i<tracks.length; i++)
+  {
+    var row = [];
+    for (t=0; t<bars*divisions; t++)
+    {
+      var note_filled = tracks[i] & (1 << t);
+      row.push( '<li class="note ' + (note_filled ? 'on' : 'off') + '"></li>' );
+    }
+    var clear = '<li class="clear"></li>';
+    rows.push( '<li> <ul class="track">' + row.join("\n") + '</ul> </li>' + clear );
+  }
+
+  $('.sheetroll').html( rows.join("\n") );
+}
+
+
+function highlight()
+{
+  $('.sheetroll .note').removeClass('active');
+  $('.sheetroll .track .note:nth-child(' + (playhead+1) + ')').addClass('active');
+}
+
 
 
 })(jQuery);

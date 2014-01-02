@@ -1,0 +1,27 @@
+.beatdown .sheetroll .note {
+  float: left;
+}
+
+.beatdown .sheetroll .clear {
+  clear: both;
+}
+
+.beatdown .sheetroll .note {
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+  border: 1px dotted #fff;
+}
+
+.beatdown .sheetroll .note.active {
+  border: 1px solid blue;
+}
+
+.beatdown .sheetroll .note.on {
+  background-color: #000;
+}
+
+.beatdown .sheetroll .note.off {
+  background-color: #ddd;
+}
+
